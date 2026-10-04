@@ -1,0 +1,9 @@
+# Bibliotecas que o app precisa para rodar (no seu computador e no Hugging Face).
+# As versões ficam fixas para o site não quebrar sozinho quando sair versão nova.
+gradio==6.29.1
+openai==3.24.0
+anthropic==1.11.0
+pyyaml==6.0.3
+pydantic==2.13.5
+python-dotenv==1.2.4
+spaces==0.51.3

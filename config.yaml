@@ -1,0 +1,50 @@
+# ============================================================================
+#  CONFIGURAÇÃO DO ASSISTENTE — este é o ÚNICO arquivo que você precisa editar.
+#
+#  Regras rápidas:
+#   • Use 2 espaços para recuar (nunca TAB).
+#   • Coloque textos entre aspas "assim".
+#   • Cores no formato "#RRGGBB" (ex.: "#2563EB").
+#   • NUNCA coloque chaves de API aqui. Elas ficam nos Secrets do Hugging Face.
+#  Contrato completo de cada campo: SPEC-parte1-cicd-deploy.md, seção 4.
+# ============================================================================
+
+assistente:
+  nome: "LMS Labs · Assistente"
+  descricao: "Aprenda pipelines, modelos e IA conversando."
+
+aparencia:
+  cor_primaria: "#0B0F19"     # preto
+  cor_secundaria: "#2563EB"   # azul (fundo vira degradê preto → azul)
+  cor_neutra: "#94A3B8"       # cinza-ardósia (textos secundários e botões)
+  logo: "assets/logo-claro.svg"
+  logo_tamanho: 96            # altura da logo em pixels (32 a 256)
+
+ia:
+  max_tokens: 1024            # tamanho máximo da resposta (~1 página)
+  temperatura: 0.7            # 0 = mais preciso · 2 = mais criativo
+  tempo_limite_segundos: 60   # espera máxima por provedor
+  provedores:                 # a ORDEM da lista é a ordem de preferência
+    - provedor: openrouter
+      modelo: "google/gemma-4-31b-it:free"
+    # O 2º modelo gratuito do OpenRouter e o modelo da OpenAI
+    # serão escolhidos na tarefa 3, com base na lista atual de modelos.
+    - provedor: anthropic
+      modelo: "claude-haiku-4-5"
+      ativo: false              # mude para true quando tiver a chave
+
+comportamento:
+  instrucoes: |
+    Você é o assistente do LMS Labs, um professor paciente de Engenharia de Dados e IA.
+    Fale com estudantes iniciantes e intermediários, sempre em português do Brasil.
+    Explique passo a passo, use exemplos do dia a dia e, quando útil, pequenos trechos de código.
+    Termine respostas longas com um resumo de 1 a 3 linhas.
+    Não invente fatos: se não souber, diga que não sabe e sugira onde pesquisar.
+    Não responda a pedidos fora de dados e IA; redirecione educadamente.
+    Nunca peça nem revele senhas, chaves de API ou dados pessoais.
+
+perguntas_exemplo:
+  - "O que é um pipeline de dados?"
+  - "Qual a diferença entre ETL e ELT?"
+  - "Como funciona um modelo de linguagem?"
+  - "Por onde começo a estudar engenharia de dados?"

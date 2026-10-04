@@ -1,0 +1,23 @@
+# Chaves e segredos locais — nunca enviar ao GitHub
+.env
+.env.*
+!.env.example
+
+# Pasta montada na hora da publicação
+dist/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+
+# Gradio
+.gradio/
+flagged/
+
+# Sistema
+.DS_Store
+Thumbs.db

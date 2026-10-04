@@ -174,6 +174,7 @@ agente-personalizado/
 ├── config.yaml                   # ⭐ O ÚNICO arquivo que você precisa editar
 ├── requirements.txt              # Bibliotecas que o Space instala
 ├── requirements-dev.txt          # Bibliotecas extras para testes (só GitHub/local)
+├── pyproject.toml                # Configuração do ruff e do pytest
 ├── .gitleaks.toml                # Regras da varredura de chaves
 ├── .env.example                  # Modelo de .env local (sem chaves de verdade)
 ├── .gitignore                    # Ignora .env, caches, pasta dist/
@@ -483,7 +484,7 @@ Hugging Face reconstrói o Space (1–5 min) → link atualizado
 
 **Fase A**
 
-1. **Esqueleto do projeto.** Criar `.gitignore`, `.env.example`, `requirements.txt`, `requirements-dev.txt`, `README.md` inicial e o `config.yaml` da seção 4.3, além das pastas `src/`, `tests/` e `scripts/` vazias.
+1. **Esqueleto do projeto.** Criar `.gitignore`, `.env.example`, `requirements.txt`, `requirements-dev.txt`, `pyproject.toml`, `README.md` inicial e o `config.yaml` da seção 4.3, além das pastas `src/`, `tests/` e `scripts/` vazias.
    *Pronto quando:* a estrutura da seção 3 existe e o `.env` está ignorado pelo Git.
 2. **Contrato do config.** Escrever `src/agente/config.py` (leitura, validação, padrões e mensagens em PT com a linha do arquivo), `scripts/validar_config.py` e os testes T1–T8 e T16.
    *Pronto quando:* configs com erros conhecidos geram as mensagens da seção 4.4.
