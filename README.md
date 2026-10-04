@@ -7,6 +7,10 @@
 
 Um chat com IA que tira dúvidas sobre **Engenharia de Dados e Inteligência Artificial** de forma didática, como um professor. Ele é personalizável por **um único arquivo** (`config.yaml`) e publicado de graça no **Hugging Face Spaces**, com deploy automático pelo **GitHub Actions**.
 
+<p align="center">
+  <img src="docs/telas/computador.png" alt="Tela do assistente no computador" width="640">
+</p>
+
 > 🚧 **Em construção — Parte 1, Fase A.** Veja o plano completo em [`SPEC-parte1-cicd-deploy.md`](SPEC-parte1-cicd-deploy.md) e a ideia original em [`docs/IDEIA-parte1.md`](docs/IDEIA-parte1.md).
 
 ## Como personalizar
@@ -35,8 +39,11 @@ pip install -r requirements-dev.txt
 cp .env.example .env             # no Windows: copy .env.example .env
 #    abra o .env e cole sua OPENROUTER_API_KEY
 
-# 3. Abrir o chat (disponível a partir da tarefa 4)
+# 3. Abrir o chat
 python app.py                    # depois acesse http://localhost:7860
+
+# Rodar os testes (opcional)
+pytest
 ```
 
 ## Segurança
