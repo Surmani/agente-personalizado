@@ -29,6 +29,9 @@ def _resumo_github(linhas: list[str]) -> None:
 
 
 def main(argv: list[str]) -> int:
+    # No Windows o terminal pode não aceitar emojis (✅ ❌); forçamos UTF-8.
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     caminho = Path(argv[1]) if len(argv) > 1 else RAIZ / "config.yaml"
     print(f"🔎 Validando {caminho.name}...\n")
 
