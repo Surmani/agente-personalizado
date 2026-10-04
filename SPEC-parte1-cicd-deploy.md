@@ -110,11 +110,14 @@ A troca de fase é feita mudando **uma variável** no GitHub (`HF_SPACE_MODE`: `
 | # | Provedor | Modelo | Ativo? | Observação |
 |---|---|---|---|---|
 | 1 | OpenRouter | `google/gemma-4-31b-it:free` | Sim | Gratuito. |
-| 2 | OpenRouter | segundo modelo `:free` | Sim | **Escolhido na tarefa 3** com base na lista atual em openrouter.ai/models (filtro "free"), porque os modelos gratuitos mudam com frequência. |
-| 3 | Anthropic | `claude-haiku-4-5` | **Não** | Ativar quando tiver a chave. |
-| 4 | OpenAI | modelo pequeno e barato da linha atual | **Não** | Confirmado na tarefa 3. Ativar quando tiver a chave. |
+| 2 | OpenRouter | `nvidia/nemotron-3-super-120b-a12b:free` | Sim | Gratuito, de outro fornecedor (NVIDIA): se o Google estiver lotado, este provavelmente não está. |
+| 3 | OpenRouter | `openrouter/free` | Sim | Roteador gratuito do OpenRouter: escolhe sozinho qualquer modelo grátis disponível. É a última rede de segurança. |
+| 4 | Anthropic | `claude-opus-5-5` | **Não** | Pago. Ativar quando tiver a chave. Para gastar menos, troque por `claude-haiku-4-5`. Usa esforço de raciocínio `low` (respostas rápidas) e o fallback de recusa do próprio servidor. |
+| 5 | OpenAI | `gpt-4.1-mini` | **Não** | Pago (barato). Ativar quando tiver a chave. |
 
 - **Limite de resposta:** `max_tokens: 1024`.
+- **Temperatura:** usada pelo OpenRouter e pela OpenAI. A biblioteca atual da Anthropic não aceita esse ajuste (os modelos Claude mais novos não usam), então ela é ignorada para a Anthropic. Também é ignorada nos modelos de raciocínio da OpenAI (`gpt-5*`, `o1`, `o3`, `o4`).
+- **Limite dos modelos `:free`:** cerca de 20 pedidos por minuto e 50 por dia (1.000 por dia se a conta do OpenRouter tiver comprado US$ 10 em créditos).
 - **Chaves esperadas**, como *Secrets* no Hugging Face ou no arquivo `.env` local: `OPENROUTER_API_KEY`, `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`.
 
 ### 2.3 Restrições conhecidas do Hugging Face Spaces
@@ -261,12 +264,14 @@ ia:
     - provedor: openrouter
       modelo: "google/gemma-4-31b-it:free"
     - provedor: openrouter
-      modelo: "<segundo modelo :free — definido na tarefa 3>"
+      modelo: "nvidia/nemotron-3-super-120b-a12b:free"
+    - provedor: openrouter
+      modelo: "openrouter/free"
     - provedor: anthropic
-      modelo: "claude-haiku-4-5"
+      modelo: "claude-opus-5-5"
       ativo: false
     - provedor: openai
-      modelo: "<modelo pequeno — definido na tarefa 3>"
+      modelo: "gpt-4.1-mini"
       ativo: false
 
 comportamento:

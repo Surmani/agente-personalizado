@@ -27,11 +27,16 @@ ia:
   provedores:                 # a ORDEM da lista é a ordem de preferência
     - provedor: openrouter
       modelo: "google/gemma-4-31b-it:free"
-    # O 2º modelo gratuito do OpenRouter e o modelo da OpenAI
-    # serão escolhidos na tarefa 3, com base na lista atual de modelos.
+    - provedor: openrouter
+      modelo: "nvidia/nemotron-3-super-120b-a12b:free"
+    - provedor: openrouter
+      modelo: "openrouter/free"     # roteador: escolhe qualquer modelo grátis disponível
     - provedor: anthropic
-      modelo: "claude-haiku-4-5"
-      ativo: false              # mude para true quando tiver a chave
+      modelo: "claude-opus-5-5"     # pago; para gastar menos, use "claude-haiku-4-5"
+      ativo: false                  # mude para true quando tiver a chave
+    - provedor: openai
+      modelo: "gpt-4.1-mini"        # pago (barato)
+      ativo: false                  # mude para true quando tiver a chave
 
 comportamento:
   instrucoes: |
